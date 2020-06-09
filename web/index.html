@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Index Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <center>
+            <form action="LoginChecker" method="POST">
+            <table border="0">
+                <tr>
+                    <td>User Name</td>
+                    <td><input type="text" name="username" id="username" placeholder="@username" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" id="password" placeholder="@password" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <button type="submit" id="btn" />Login </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+            <a href="registration.html" />Register </a>
+        </center>
+    </body>
+    <script>
+        $("document").ready(function(){
+            $('#btn').click(function(){
+                var username = $('#username').val();
+                var password = $('#password').val();
+                $.ajax({
+                    method:"POST",
+                    url:"LoginChecker",
+                    data:{
+                        username:username,
+                        password:password
+                    },
+                    success:function(data){
+                        if(data == 'Success'){
+                            window.location = 'home.jsp'
+                        }
+                        else{
+                            alert('Failed')
+                        }
+                    }
+                })
+            })
+            
+            
+            
+        })
+    </script>
+</html>
